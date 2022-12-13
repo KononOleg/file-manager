@@ -1,8 +1,9 @@
 import readline from "readline";
+import getUsername from "./getUsername.js";
 
 const runFileManager = async () => {
-  const userName = "userName";
   let currentDirectory = process.env.HOME;
+  const userName = getUsername(currentDirectory);
 
   const rl = readline.createInterface({
     input: process.stdin,
