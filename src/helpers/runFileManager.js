@@ -1,5 +1,8 @@
 import readline from "readline";
+import navigation from "../handlers/nwd/navigation.js";
+import workingDirectory from "../handlers/nwd/workingDirectory.js";
 import getUsername from "./getUsername.js";
+import pathResolve from "./path.js";
 
 const runFileManager = async () => {
   let currentDirectory = process.env.HOME;
@@ -15,6 +18,22 @@ const runFileManager = async () => {
       case input === ".exit":
         rl.close();
         break;
+
+      case input === "up":
+        currentDirectory = await navigation(
+          pathResolve("..", currentDirectory)
+        );
+        break;
+      case input.startsWith("cd "):
+        currentDirectory = await navigation(
+          pathResolve(input, currentDirectory),
+          currentDirectory
+        );
+        break;
+      case input === "ls":
+        await workingDirectory(currentDirectory);
+        break;
+
       default:
         process.stdout.write("\nInvalid input\n");
         break;
