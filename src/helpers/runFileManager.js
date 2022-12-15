@@ -7,6 +7,7 @@ import rm from "../handlers/file/rm.js";
 import rn from "../handlers/file/rn.js";
 import navigation from "../handlers/nwd/navigation.js";
 import workingDirectory from "../handlers/nwd/workingDirectory.js";
+import osInfo from "../handlers/os/index.js";
 import getUsername from "./getUsername.js";
 import pathResolve from "./path.js";
 
@@ -66,6 +67,22 @@ const runFileManager = async () => {
           pathResolve(input, currentDirectory),
           pathResolve(input, currentDirectory, 2)
         );
+        break;
+
+      case input === "os --EOL":
+        osInfo("EOL");
+        break;
+      case input === "os --cpus":
+        osInfo("cpus");
+        break;
+      case input === "os --homedir":
+        osInfo("homedir");
+        break;
+      case input === "os --username":
+        osInfo("username");
+        break;
+      case input === "os --architecture":
+        osInfo("architecture");
         break;
 
       default:
