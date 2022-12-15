@@ -1,4 +1,10 @@
 import readline from "readline";
+import add from "../handlers/file/add.js";
+import cat from "../handlers/file/cat.js";
+import cp from "../handlers/file/cp.js";
+import mv from "../handlers/file/mv.js";
+import rm from "../handlers/file/rm.js";
+import rn from "../handlers/file/rn.js";
 import navigation from "../handlers/nwd/navigation.js";
 import workingDirectory from "../handlers/nwd/workingDirectory.js";
 import getUsername from "./getUsername.js";
@@ -32,6 +38,34 @@ const runFileManager = async () => {
         break;
       case input === "ls":
         await workingDirectory(currentDirectory);
+        break;
+
+      case input.startsWith("cat "):
+        await cat(pathResolve(input, currentDirectory));
+        break;
+      case input.startsWith("add "):
+        await add(pathResolve(input, currentDirectory));
+        break;
+      case input.startsWith("rm "):
+        await rm(pathResolve(input, currentDirectory));
+        break;
+      case input.startsWith("rn "):
+        await rn(
+          pathResolve(input, currentDirectory),
+          pathResolve(input, currentDirectory, 2)
+        );
+        break;
+      case input.startsWith("cp "):
+        await cp(
+          pathResolve(input, currentDirectory),
+          pathResolve(input, currentDirectory, 2)
+        );
+        break;
+      case input.startsWith("mv "):
+        await mv(
+          pathResolve(input, currentDirectory),
+          pathResolve(input, currentDirectory, 2)
+        );
         break;
 
       default:
