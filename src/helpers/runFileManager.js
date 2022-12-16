@@ -9,6 +9,8 @@ import hash from "../handlers/hash/index.js";
 import navigation from "../handlers/nwd/navigation.js";
 import workingDirectory from "../handlers/nwd/workingDirectory.js";
 import osInfo from "../handlers/os/index.js";
+import compress from "../handlers/zip/compress.js";
+import decompress from "../handlers/zip/decompress .js";
 import getUsername from "./getUsername.js";
 import pathResolve from "./path.js";
 
@@ -88,6 +90,20 @@ const runFileManager = async () => {
 
       case input.startsWith("hash "):
         await hash(pathResolve(input, currentDirectory));
+        break;
+
+      case input.startsWith("compress "):
+        await compress(
+          pathResolve(input, currentDirectory),
+          pathResolve(input, currentDirectory, 2)
+        );
+        break;
+
+      case input.startsWith("decompress "):
+        await decompress(
+          pathResolve(input, currentDirectory),
+          pathResolve(input, currentDirectory, 2)
+        );
         break;
 
       default:
