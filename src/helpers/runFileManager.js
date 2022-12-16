@@ -5,6 +5,7 @@ import cp from "../handlers/file/cp.js";
 import mv from "../handlers/file/mv.js";
 import rm from "../handlers/file/rm.js";
 import rn from "../handlers/file/rn.js";
+import hash from "../handlers/hash/index.js";
 import navigation from "../handlers/nwd/navigation.js";
 import workingDirectory from "../handlers/nwd/workingDirectory.js";
 import osInfo from "../handlers/os/index.js";
@@ -83,6 +84,10 @@ const runFileManager = async () => {
         break;
       case input === "os --architecture":
         osInfo("architecture");
+        break;
+
+      case input.startsWith("hash "):
+        await hash(pathResolve(input, currentDirectory));
         break;
 
       default:
