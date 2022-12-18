@@ -1,14 +1,17 @@
-import { readdir, stat } from "fs/promises";
+import { readdir } from "fs/promises";
+import { extname } from "path";
+
 const workingDirectory = async (currentDirectory) => {
   try {
     const result = [];
     const files = await readdir(currentDirectory);
 
     for (const fileName of files) {
-      const stats = await stat(`${currentDirectory}/${fileName}`);
       result.push({
         Name: fileName,
-        Type: stats.isFile() ? "file" : "directory",
+        Type: !!extname(`${currentDirectory}/${fileName}`)
+          ? "file"
+          : "directory",
       });
     }
 
