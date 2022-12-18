@@ -31,7 +31,7 @@ const runFileManager = async () => {
 
       case input === "up":
         currentDirectory = await navigation(
-          pathResolve("..", currentDirectory)
+          pathResolve("..", currentDirectory, 0)
         );
         break;
       case input.startsWith("cd "):
