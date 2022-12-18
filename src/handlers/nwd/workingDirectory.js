@@ -17,7 +17,7 @@ const workingDirectory = async (currentDirectory) => {
           result.sort().sort((a, b) => a.Type.localeCompare(b.Type))
         )
       : process.stdout.write("\nThis folder is empty\n");
-  } catch (err) {
+  } catch {
     process.stdout.write("\nOperation failed\n");
   }
 };

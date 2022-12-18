@@ -1,16 +1,18 @@
 import readline from "readline";
-import add from "../handlers/file/add.js";
-import cat from "../handlers/file/cat.js";
-import cp from "../handlers/file/cp.js";
-import mv from "../handlers/file/mv.js";
-import rm from "../handlers/file/rm.js";
-import rn from "../handlers/file/rn.js";
-import hash from "../handlers/hash/index.js";
-import navigation from "../handlers/nwd/navigation.js";
-import workingDirectory from "../handlers/nwd/workingDirectory.js";
-import osInfo from "../handlers/os/index.js";
-import compress from "../handlers/zip/compress.js";
-import decompress from "../handlers/zip/decompress .js";
+import {
+  add,
+  cat,
+  cp,
+  mv,
+  rm,
+  rn,
+  hash,
+  navigation,
+  workingDirectory,
+  osInfo,
+  compress,
+  decompress,
+} from "../handlers/index.js";
 import getUsername from "./getUsername.js";
 import pathResolve from "./path.js";
 
